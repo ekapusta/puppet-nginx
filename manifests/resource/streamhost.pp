@@ -11,8 +11,8 @@
 #     streamhost on. Defaults to TCP 80
 #   [*listen_options*]      - Extra options for listen directive like
 #     'default' to catchall. Undef by default.
-#   [*location_allow*]      - Array: Locations to allow connections from.
-#   [*location_deny*]       - Array: Locations to deny connections from.
+#   [*allow*]               - Array: Allow connections from.
+#   [*deny*]                - Array: Deny connections from.
 #   [*ipv6_enable*]         - BOOL value to enable/disable IPv6 support
 #     (false|true). Module will check to see if IPv6 support exists on your
 #     system before enabling.
@@ -62,6 +62,8 @@ define nginx::resource::streamhost (
   $listen_ip                    = '*',
   $listen_port                  = '80',
   $listen_options               = undef,
+  $allow                        = [],
+  $deny                         = [],
   $ipv6_enable                  = false,
   $ipv6_listen_ip               = '::',
   $ipv6_listen_port             = '80',
@@ -102,6 +104,8 @@ define nginx::resource::streamhost (
 
   validate_array($resolver)
   validate_array($server_name)
+  validate_array($allow)
+  validate_array($deny)
 
   validate_string($owner)
   validate_string($group)
