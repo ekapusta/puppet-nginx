@@ -3,3 +3,6 @@
   <% if @upstream_max_fails -%>
     max_fails=<%=@upstream_max_fails %>
   <% end %>;
+  <% if @weight -%>
+    weight=<%=@weight %>
+  <% end %>;

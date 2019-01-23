@@ -40,6 +40,7 @@ define nginx::resource::upstream::member (
   $ensure                 = 'present',
   $port                   = '80',
   $upstream_fail_timeout  = '10s',
+  $weight                 = '1'
 ) {
 
   validate_re($ensure, '^(present|absent)$',
